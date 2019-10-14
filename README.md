@@ -5,7 +5,14 @@ frontend for Wordpress blog.
 
 ## Development Mode
 You need to start a worpress instance and assume your posts are found in
-localhost. So, add your worpress postlink to config.edn.
+localhost.
+Also, you need to add your wordpress posts links to config.cljs (if they differ
+from http://localhost:8000). Also make sure, your wordpress url structure is
+"Post Name" i.e. http://localhost:8000/sample-post/ You can change this in
+Settings -> General --> Permalink Settings
+
+In scripts-folder you can find and example docker-compose file that you can use
+to set up testing environment. 
 
 ### Run application:
 
