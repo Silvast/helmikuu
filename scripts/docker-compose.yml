@@ -1,0 +1,32 @@
+version: '2'
+volumes:
+ dbdata:
+
+services:
+ db:
+  image: mysql:5.7
+  container_name: wpmysql
+  volumes:
+    - dbdata:/var/lib/mysql2
+  restart: always
+  environment:
+    - MYSQL_ROOT_PASSWORD=ansku
+    - MYSQL_DATABASE=wpmysli
+    - MYSQL_USER=wordpress
+    - MYSQL_PASSWORD=ansku
+  ports:
+    - "33061:3306"
+
+ wordpress:
+   depends_on:
+     - db
+   image: wordpress:latest
+   ports:
+     - "8000:80"
+   restart: always
+   volumes:
+       - ~/sorsat/omat/lokakuu/data/:/var/www/
+   environment:
+     WORDPRESS_DB_HOST: db:3306
+     WORDPRESS_DB_USER: root
+     WORDPRESS_DB_PASSWORD: ansku

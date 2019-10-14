@@ -1,0 +1,27 @@
+
+.headeri {
+  max-width: 50%;
+}
+
+.nav-pills .nav-link.active {
+  background-color: red;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  font-size: 110%;
+  color: black;
+  font-family: "Georgia";
+}
+
+.nav-link {
+  color: #242731;
+}
+
+a {
+  color: #2f3b3e;
+}
+
+body {
+  font-family: "Georgia";
+}
