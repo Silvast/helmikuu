@@ -11,7 +11,7 @@
   font-weight: bold;
   font-size: 110%;
   color: black;
-  font-family: "Georgia";
+  font-family: 'Lato', sans-serif;
 }
 
 .nav-link {
@@ -23,5 +23,5 @@ a {
 }
 
 body {
-  font-family: "Georgia";
+  font-family: 'Lato', sans-serif;
 }
