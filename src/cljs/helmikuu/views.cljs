@@ -2,19 +2,11 @@
   (:require
    [re-frame.core :as re-frame]
    [helmikuu.subs :as subs]
-   [helmikuu.db :as db]
    [cljs.core.async :as a :refer [<!]]
+   [cljs-http.client :as http]
+   [helmikuu.conf :refer [config]]
    [reagent.core :as r])
   (:require-macros [cljs.core.async.macros :refer [go]]))
-
-(defonce blogdata (r/atom []))
-
-(defonce request
-  (go (let [response (<! (db/get-blog-posts))]
-        (reset! blogdata (:body response)))))
-
-(defonce blogitemdata (r/atom []))
-(defonce old-slug (atom ""))
 
 (defn header []
   (let [panel (re-frame/subscribe [::subs/active-panel])]
@@ -64,31 +56,23 @@
  ;; blog
 
 (defn blog-panel []
-  (let [data @blogdata]
+  (let [data @(re-frame/subscribe [::subs/all-posts-api-response])]
     [:div.container
      [header]
      [:div.container.pt-4
       (map (fn [blogitem]
              [:div {:key (:ID blogitem)}
-              [:h2 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
+             [:h2 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
               [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
               [:a {:href "#"}]]) (:posts data))]]))
 
 (defn blogitem-panel []
-  (let [slug (re-frame/subscribe [::subs/slug])]
-    (if (not= @old-slug slug)
-      (do
-        (go (let [response (<! (db/get-one-post @slug))]
-              (apply js/console.log response)
-              (reset! blogitemdata (:body response))))
-        (reset! old-slug slug)))
+  (let [blogpost-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
     [:div.container
      [header]
      [:div.container.pt-4
-      [:h2 (:title @blogitemdata)]
-      [:p {:dangerouslySetInnerHTML {:__html (:content @blogitemdata)}}]]]))
-
-
+      [:h2 (:title @blogpost-api-response)]
+      [:p {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]))
 ;; main
 
 

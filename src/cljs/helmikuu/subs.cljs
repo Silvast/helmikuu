@@ -12,8 +12,22 @@
  (fn [db _]
    (:active-panel db)))
 
-
 (re-frame/reg-sub
   ::slug
-  (fn [db]
+  (fn [db _]
     (:slug db)))
+
+(re-frame/reg-sub
+  ::blogitem
+  (fn [db _]
+    (:blogitem db)))
+
+(re-frame/reg-sub
+  ::blogpost-api-response
+  (fn [db _]
+    (:blogpost-api-response db)))
+
+(re-frame/reg-sub
+  ::all-posts-api-response
+  (fn [db _]
+    (:all-posts-api-response db)))
