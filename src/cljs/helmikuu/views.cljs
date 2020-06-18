@@ -48,7 +48,7 @@
             [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:url (:post_thumbnail blogitem))}]]]
              ;;[:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
              [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
-             [:a {:href "#"}]]) (:posts blogs))
+             [:a {:href "#"}]]) (:posts blogs)) 
           ]]]]))
         ; (map (fn [blogitem]
         ;        [:div.pos.col-md-4 {:key (:ID blogitem)}
