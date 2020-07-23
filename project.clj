@@ -5,6 +5,7 @@
                  [re-frame "0.10.5"]
                  [secretary "1.2.3"]
                  [cljs-http "0.1.45"]
+                 [com.andrewmcveigh/cljs-time "0.5.2"]
                  [org.clojure/core.async "0.4.474"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]

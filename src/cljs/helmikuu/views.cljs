@@ -4,6 +4,8 @@
    [helmikuu.subs :as subs]
    [cljs.core.async :as a :refer [<!]]
    [cljs-http.client :as http]
+   [cljs-time.core :as time]
+   [cljs-time.format :as f]
    [helmikuu.conf :refer [config]]
    [reagent.core :as r])
   (:require-macros [cljs.core.async.macros :refer [go]]))
@@ -14,13 +16,15 @@
      [:nav.navbar.navbar-expand-lg
       [:div.container
        [:div.navbar-header.d-flex.align-items-center.justify-content-between
-        [:a.navbar-brand {:href "#/"} "Anne-Mari Silvast"]]
-       [:div#navbarcollapse.collapse.navbar-collapse
+        [:a.navbar-brand {:href "#/"}
+        ; [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskuicon2.png"}]
+         ]]
+       [:div#navbarcollapse.collapse.navbar-collapse.show
         [:ul.navbar-nav.ml-auto
          [:li.nav-item
           [(if (= @panel :home-panel)
              :a.nav-link.active
-             :a.nav-link) {:href "#/"} "Home"]]
+             :a.nav-link) {:href "#/"} "Etusivu"]]
          [:li.nav-item
           [(if (or (= @panel :blog-panel) (= @panel :blogitem-panel))
              :a.nav-link.active
@@ -28,78 +32,104 @@
          [:li.nav-item
           [(if (= @panel :about-panel)
              :a.nav-link.active
-             :a..nav-link) {:href "#/about"} "About"]]]]]]]))
+             :a..nav-link) {:href "#/about"} "Minä"]]]]]]]))
 
+;; Footer
+(defn footer []
+  [:footer.main-footer
+   [:div.container
+    [:div.row
+     [:div.col-md-4 [:p [:a {:href "https://github.com/Silvast"} [:i.fa.fa-github {:style {"font-size" "36px"}}]]]]
+     [:div.col-md-4 [:p [:a {:href "https://twitter.com/AnskuSilvast"} [:i.fa.fa-twitter {:style {"font-size" "36px"}}]]]]
+     [:div.col-md-4 [:p [:a {:href "https://www.linkedin.com/in/silvast/"} [:i.fa.fa-linkedin {:style {"font-size" "36px"}}]]]]]]])
+
+;; Twitterpanel
 ;; home
 
 
 (defn home-panel []
   (let [blogs @(re-frame/subscribe [::subs/all-posts-api-response])]
-     [:div
-    [header]
+    [:div.main
+     [header]
+     [:div.blogheading
+      [:h2 "Olen Ansku."]]
+     [:section.latest-posts
+      [:div.container.text-bigger
+       [:div.row.me-card
+        [:div.col-md-4
+         [:div.frontpage-image
+          [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
+          [:div.pixel-overlay]]]
+        [:div.col-md-8
+         [:p "Devaan ja yleistekkeilen,
+       märsään ihmisoikeuksista, työelämästä ja sijoittamisesta. Työkseni teen
+       teknisen projarin hommia.  "
+          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]]
+     [:div.blogheading
+      [:h2 "Viimeisimmät blogikirjoitukset"]]
      [:section.latest-posts
       [:div.container
-       [:header
-        [:h2 "Viimeisimmät blogikirjoitukset"]
-        [:p.text-big "Märsäystä tekniikasta, kirjoista ja muusta randomista."]]
-          [:div.row
-          (map (fn [blogitem]
-            [:div.pos.col-md-4 {:key (:ID blogitem)}
-            [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:url (:post_thumbnail blogitem))}]]]
-             ;;[:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
-             [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
-             [:a {:href "#"}]]) (:posts blogs)) 
-          ]]]]))
-        ; (map (fn [blogitem]
-        ;        [:div.pos.col-md-4 {:key (:ID blogitem)}
-        ;         [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:url (:post_thumbnail blogitem))}]]]
-        ;         ; [:div.post-details
-        ;         ;  [:div.post-meta.d-flex.justify-content-between [:div.date (:date blogitem)] [:div.category (:name (first (:categories blogitem)))]]
-        ;         ;  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
-        ;         ;  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}]]
-        ;          ]) (:posts blogs))
-                 
-        ;          ]]
-        ;          ]
-        ;          ]))
-
+       [:div.row
+        (map (fn [blogitem]
+               [:div.col-md-4 {:key (:ID blogitem)}
+                [:div.blog-card
+                 [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
+                 [:div.post-meta.d-flex.justify-content-between
+                  [:div.date (take 10 (:date blogitem))]
+                  [:div.category (:name (:tekki (:categories blogitem)))]]
+                 [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
+                 [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
+                 [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
+     [:div.blogheading
+      [:h2 "Twiittailut"]]
+     [:section.latest-posts
+      [:div.container
+       [:div.row
+        ; [:div [:div {:dangerouslySetInnerHTML {:__html "<a class=\"twitter-timeline\"
+        ; href=\"https://twitter.com/AnskuSilvast?ref_src=twsrc%5Etfw\">Tweets by
+        ; AnskuSilvast</a> <script async src=\"https://platform.twitter.com/widgets.js\"
+        ; charset=\"utf-8\"></script>"}}] ] 
+        ]]]
+     [footer]]))
 
 ;; about
 
 
 (defn about-panel []
-  [:div.container
+  [:div.main
    [header]
-   [:div.container.pt-4
-    [:h1 "This is the About Page."]
+   [:div.container.pt-4.about
+    [:h1 "Minä olen Anne-Mari Silvast."]
 
     [:div
-     [:a {:href "#/"}
-      "go to Home Page"]]]])
+     [:h2 "Bio"]]]
+   [footer]])
 
  ;; blog
 
 (defn blog-panel []
   (let [data @(re-frame/subscribe [::subs/all-posts-api-response])]
-    [:div.container
+    [:div.main
      [header]
-     [:div.container.pt-4
+     [:div.container.pt-4.about
       (map (fn [blogitem]
              [:div {:key (:ID blogitem)}
               [:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
               [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
-              [:a {:href "#"}]]) (:posts data))]]))
+              [:a {:href "#"}]]) (:posts data))]
+     [footer]]))
 
 (defn blogitem-panel []
   (let [blogpost-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
-    [:div.container
+    [:div.main.about
      [header]
      [:div.container.pt-4
       [:div.row
        [:div.col-sm
         [:article
          [:h1 (:title @blogpost-api-response)]
-         [:p {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]]))
+         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]
+     [footer]]))
 ;; main
 
 
