@@ -7,11 +7,14 @@
    [cljs-time.core :as time]
    [cljs-time.format :as f]
    [helmikuu.conf :refer [config]]
-   [reagent.core :as r])
+   [reagent.core :as r]
+   [goog.object])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 (defn header []
-  (let [panel (re-frame/subscribe [::subs/active-panel])]
+  (let [panel (re-frame/subscribe [::subs/active-panel])
+        document-title (re-frame/subscribe [::subs/title])]
+    (goog.object/set js/document "title" @document-title)
     [:header.header
      [:nav.navbar.navbar-expand-lg
       [:div.container
@@ -39,9 +42,9 @@
   [:footer.main-footer
    [:div.container
     [:div.row
-     [:div.col-md-4 [:p [:a {:href "https://github.com/Silvast"} [:i.fa.fa-github {:style {"font-size" "36px"}}]]]]
-     [:div.col-md-4 [:p [:a {:href "https://twitter.com/AnskuSilvast"} [:i.fa.fa-twitter {:style {"font-size" "36px"}}]]]]
-     [:div.col-md-4 [:p [:a {:href "https://www.linkedin.com/in/silvast/"} [:i.fa.fa-linkedin {:style {"font-size" "36px"}}]]]]]]])
+     [:div.col-md-4 [:p [:a {:href "https://github.com/Silvast"} [:i.fa.fa-github {:style {"fontSize" "36px"}}]]]]
+     [:div.col-md-4 [:p [:a {:href "https://twitter.com/AnskuSilvast"} [:i.fa.fa-twitter {:style {"fontSize" "36px"}}]]]]
+     [:div.col-md-4 [:p [:a {:href "https://www.linkedin.com/in/silvast/"} [:i.fa.fa-linkedin {:style {"fontSize" "36px"}}]]]]]]])
 
 ;; Twitterpanel
 ;; home
@@ -51,20 +54,25 @@
   (let [blogs @(re-frame/subscribe [::subs/all-posts-api-response])]
     [:div.main
      [header]
-     [:div.blogheading
-      [:h2 "Olen Ansku."]]
-     [:section.latest-posts
-      [:div.container.text-bigger
-       [:div.row.me-card
-        [:div.col-md-4
-         [:div.frontpage-image
-          [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
-          [:div.pixel-overlay]]]
+      [:div.siteintro
+      [:div.text [:h2 "Olen Ansku."]]
+        ; [:div.frontpage-image
+        ;   [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskunen-min.png"}]
+        ;   [:div.text [:h2 "Olen Ansku."]]
+        ;   [:div.pixel-overlay]]
+          ]
+          [:section.latest-posts
+            [:div.container.text-bigger
+            [:div.row.me-card
+              [:div.col-md-4
+              [:div.frontpage-image
+                [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
+               [:div.pixel-overlay]]]
         [:div.col-md-8
          [:p "Devaan ja yleistekkeilen,
        märsään ihmisoikeuksista, työelämästä ja sijoittamisesta. Työkseni teen
-       teknisen projarin hommia.  "
-          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]]
+       teknisen projarin hommia.  "]
+          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]
      [:div.blogheading
       [:h2 "Viimeisimmät blogikirjoitukset"]]
      [:section.latest-posts

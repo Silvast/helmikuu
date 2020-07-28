@@ -7,7 +7,8 @@
    [day8.re-frame.tracing :refer-macros [fn-traced defn-traced]]))
 
 (def default-db
-  {:name "re-frame"})
+  {:name "re-frame"
+  :title "Anne-Mari Silvast"})
 
 (defn slug-url [slug]
   (str (:wordpress-slug-url config) slug))
@@ -22,7 +23,9 @@
 (re-frame/reg-event-db
  ::set-active-panel
  (fn-traced [db [_ active-panel]]
-   (assoc db :active-panel active-panel)))
+  (-> db
+    (assoc :title "Anne-Mari Silvast")
+    (assoc :active-panel active-panel))))
 
  (re-frame/reg-event-db
   ::set-slug
@@ -42,9 +45,10 @@
 (re-frame/reg-event-db
   :get-blogpost-success
   (fn-traced [db [_ result]]
-   (-> db
-        (assoc-in [:loading :blogpost] false)
-        (assoc :blogpost-api-response result))))
+        (-> db
+            (assoc-in [:loading :blogpost] false)
+            (assoc :blogpost-api-response result)
+            (assoc :title (:title result)))))
 
 (re-frame/reg-event-fx
   ::get-all-posts

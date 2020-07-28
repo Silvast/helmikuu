@@ -1,6 +1,0 @@
-(require '[helmikuu.db :as db] :reload)
-exit
-(require '[helmikuu.db :as db] :reload)
-exit
-(require '[helmikuu.db :as db] :reload)
-exit

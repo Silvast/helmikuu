@@ -37,7 +37,8 @@
   (do
     (re-frame/dispatch [::events/set-slug slug])
     (re-frame/dispatch [::events/get-blogpost slug])
-    (re-frame/dispatch [::events/set-active-panel :blogitem-panel])))
+    (re-frame/dispatch [::events/set-active-panel :blogitem-panel])
+    (re-frame/dispatch [::events/set-title])))
 
   ;; --------------------
   (hook-browser-navigation!))

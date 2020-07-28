@@ -31,3 +31,8 @@
   ::all-posts-api-response
   (fn [db _]
     (:all-posts-api-response db)))
+
+(re-frame/reg-sub
+  ::title
+  (fn [db _]
+    (:title db)))
