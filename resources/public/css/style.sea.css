@@ -270,6 +270,10 @@ i[class*="icon-"] {
   border-radius: 0.8rem;
 }
 
+figcaption {
+  font-size: 0.9rem;
+  color: #999;
+}
 #style-switch-button {
   z-index: 9999 !important;
 }

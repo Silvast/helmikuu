@@ -88,30 +88,41 @@
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
                  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
                  [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
-     [:div.blogheading
-      [:h2 "Twiittailut"]]
-     [:section.latest-posts
-      [:div.container
-       [:div.row
-        ; [:div [:div {:dangerouslySetInnerHTML {:__html "<a class=\"twitter-timeline\"
-        ; href=\"https://twitter.com/AnskuSilvast?ref_src=twsrc%5Etfw\">Tweets by
-        ; AnskuSilvast</a> <script async src=\"https://platform.twitter.com/widgets.js\"
-        ; charset=\"utf-8\"></script>"}}] ] 
-        ]]]
+    ;  [:div.blogheading
+    ;   [:h2 "Twiittailut"]]
+    ;  [:section.latest-posts
+    ;   [:div.container
+    ;    [:div.row
+    ;     ; [:div [:div {:dangerouslySetInnerHTML {:__html "<a class=\"twitter-timeline\"
+    ;     ; href=\"https://twitter.com/AnskuSilvast?ref_src=twsrc%5Etfw\">Tweets by
+    ;     ; AnskuSilvast</a> <script async src=\"https://platform.twitter.com/widgets.js\"
+    ;     ; charset=\"utf-8\"></script>"}}] ] 
+    ;     ]]]
      [footer]]))
 
 ;; about
 
 
-(defn about-panel []
-  [:div.main
-   [header]
-   [:div.container.pt-4.about
-    [:h1 "Minä olen Anne-Mari Silvast."]
+; (defn about-panel []
+;   [:div.main
+;    [header]
+;    [:div.container.pt-4.about
+;     [:h1 "Minä olen Anne-Mari Silvast."]
 
-    [:div
-     [:h2 "Bio"]]]
-   [footer]])
+;     [:div
+;      [:h2 "Bio"]]]
+;    [footer]])
+(defn about-panel []
+  (let [about-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
+    [:div.main.about
+     [header]
+     [:div.container.pt-4
+      [:div.row
+       [:div.col-sm
+        [:article
+         [:h1 "Minä olen Anne-Mari Silvast."]
+         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @about-api-response)}}]]]]]
+     [footer]]))
 
  ;; blog
 

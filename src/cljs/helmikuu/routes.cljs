@@ -26,7 +26,10 @@
       (re-frame/dispatch [::events/set-active-panel :home-panel])))
 
   (defroute "/about" []
-    (re-frame/dispatch [::events/set-active-panel :about-panel]))
+    (do
+      (re-frame/dispatch [::events/set-slug "about"])
+      (re-frame/dispatch [::events/get-blogpost "about"])
+      (re-frame/dispatch [::events/set-active-panel :about-panel])))
 
 (defroute "/blog" []
   (do
