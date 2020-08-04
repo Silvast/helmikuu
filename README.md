@@ -35,4 +35,4 @@ lein clean
 lein cljsbuild once min
 ```
 
-After this you will have the app in /resources/public.
+After this you will have the app files in /resources/public.
