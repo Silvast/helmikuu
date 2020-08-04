@@ -72,7 +72,7 @@ a i {
 
 ul {
   margin: 0;
-  padding: 0;
+  padding: 5%;
 }
 
 section {
@@ -189,7 +189,7 @@ h1 a:hover {
 .blogheading {
   /* background-color: #aaaea347; */
   text-align: center;
-  padding: 100px;
+  padding: 2%;
 }
 
 .frontpage-image > .text {
@@ -207,7 +207,7 @@ h1 a:hover {
 }
 
 .blogheading h2, .siteintro .frontpage-image h2 {
-  font-size: 40px;
+  font-size: 2rem;
   text-decoration: underline;
   text-decoration-color: #1fde82;
   text-underline-position: under;
@@ -510,10 +510,6 @@ h6 {
 .pagination-template a.page-link:hover,
 .pagination-template a.page-link.active {
   background: #eee;
-}
-
-.container-fluid {
-  width: 100%;
 }
 
 .text-big {
@@ -914,7 +910,19 @@ section.featured-posts .post-footer {
 }
 
 /* Featured Posts Section Media Query ------------------------------------- */
+@media (min-width: 991px) {
+  .container-fluid {
+    max-width: 70%;
+  }
+
+.post-thumbnail {
+  max-height: 90%;
+}
+}
 @media (max-width: 991px) {
+  .container-fluid {
+    max-width: 100%;
+  }
   section.featured-posts .image {
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
@@ -933,6 +941,12 @@ section.featured-posts .post-footer {
   }
 .siteintro {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+.post-thumbnail {
+  max-width: 60%;
   }
 }
 
@@ -1490,14 +1504,21 @@ main.posts-listing .post-footer {
   font-size: 0.8em;
 }
 
+.post-thumbnail {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .blog-post .post-thumbnail img {
   width: 100%;
+  max-height: 50%;
   margin-bottom: 10px;
   border-radius: 0.8rem;
 }
 
 .post-thumbnail img {
   width: 100%;
+  max-height: 50%;
   margin-bottom: 10px;
   border-radius: 0.8rem;
 }
@@ -1699,7 +1720,7 @@ main.posts-listing .post-footer {
   min-height: 150px;
 }
 
-blockquote.blockquote {
+blockquote {
   font-size: 1.05em;
   line-height: 1.7em;
   border-color: #f5ff4b;
@@ -1711,9 +1732,15 @@ blockquote.blockquote {
   margin-bottom: 30px;
 }
 
-blockquote.blockquote p {
+blockquote > p {
   margin-bottom: 15px !important;
+  font-style: italic;
 }
+
+blockquote > cite {
+  font-style: normal;
+}
+
 
 @media (max-width: 767px) {
   .posts-nav a {

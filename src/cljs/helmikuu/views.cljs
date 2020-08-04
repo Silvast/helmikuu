@@ -62,13 +62,13 @@
         ;   [:div.pixel-overlay]]
           ]
           [:section.latest-posts
-            [:div.container.text-bigger
+            [:div.container
             [:div.row.me-card
-              [:div.col-md-4
+              [:div.col-md-6.col-12
               [:div.frontpage-image
                 [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
                [:div.pixel-overlay]]]
-        [:div.col-md-8
+        [:div.col-md-6.col-12
          [:p "Devaan ja yleistekkeilen,
        märsään ihmisoikeuksista, työelämästä ja sijoittamisesta. Työkseni teen
        teknisen projarin hommia.  "]
@@ -76,10 +76,10 @@
      [:div.blogheading
       [:h2 "Viimeisimmät blogikirjoitukset"]]
      [:section.latest-posts
-      [:div.container
+      [:div.container-fluid
        [:div.row
         (map (fn [blogitem]
-               [:div.col-md-4 {:key (:ID blogitem)}
+               [:div.col-md-4.col-sm-12.col-xs-12.col-12 {:key (:ID blogitem)}
                 [:div.blog-card
                  [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
                  [:div.post-meta.d-flex.justify-content-between
@@ -130,7 +130,7 @@
   (let [data @(re-frame/subscribe [::subs/all-posts-api-response])]
     [:div.main
      [header]
-     [:div.container.pt-4.about
+     [:div.container.about
       (map (fn [blogitem]
              [:div {:key (:ID blogitem)}
               [:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
@@ -147,7 +147,7 @@
        [:div.col-sm
         [:article
          [:h1 (:title @blogpost-api-response)]
-         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]
+         [:p {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]
      [footer]]))
 ;; main
 
