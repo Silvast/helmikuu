@@ -34,3 +34,5 @@ To compile clojurescript to javascript:
 lein clean
 lein cljsbuild once min
 ```
+
+After this you will have the app in /resources/public.
