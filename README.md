@@ -15,7 +15,7 @@ In scripts-folder you can find and example docker-compose file that you can use
 to set up testing environment. 
 
 ### Run application:
-k
+
 ```
 lein clean
 lein figwheel dev
