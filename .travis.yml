@@ -22,3 +22,4 @@ deploy:
   $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER "sh ~/helmikuu/deploy.sh"
     on:
       branch: master
+
