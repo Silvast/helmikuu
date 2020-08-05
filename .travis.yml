@@ -21,4 +21,4 @@ deploy:
   script: >-
     ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes
     -o PasswordAuthentication=no
-    -p22 ubuntu@$PRODUCTION_SERVER "echo "Hello world" > test.txt"
+    -p22 ubuntu@$PRODUCTION_SERVER "echo "Hello world,jee" > test.txt"
