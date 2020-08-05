@@ -19,5 +19,6 @@ deploy:
     branch: master
   provider: script
   script: >-
-    ssh -o "StrictHostKeyChecking no" -p22 -i
-    /tmp/deploy_rsa $PRODUCTION_SERVER "echo "Hello world" > test.txt"
+    ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes
+    -o PasswordAuthentication=no -p22
+    -i deploy_rsa $PRODUCTION_SERVER "echo "Hello world" > test.txt"
