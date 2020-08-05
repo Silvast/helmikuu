@@ -20,5 +20,5 @@ deploy:
   verbose: true
   script: >-
     ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes
-    o PasswordAuthentication=no
+    -o PasswordAuthentication=no
     -p22 ubuntu@$PRODUCTION_SERVER "echo "Hello world" > test.txt"
