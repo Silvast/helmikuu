@@ -14,6 +14,9 @@ env: >-
 install: lein clean
 script: lein cljsbuild once min
 deploy:
+  skip_cleanup: true
+  on:
+    branch: master
   provider: script
   script: >-
     rsync -e "ssh -o StrictHostKeyChecking=no"-r --delete-after
