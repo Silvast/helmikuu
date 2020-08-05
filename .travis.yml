@@ -16,7 +16,8 @@ script: lein cljsbuild once min
 deploy:
   provider: script
   script: >-
-    rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/resources
+    rsync -e "ssh -o StrictHostKeyChecking=no"-r --delete-after
+    --quiet $TRAVIS_BUILD_DIR/resources
     $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER:~/helmikuu/ &&
     ssh -o "StrictHostKeyChecking no" -p22
     $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER "sh ~/helmikuu/scripts/deploy.sh"
