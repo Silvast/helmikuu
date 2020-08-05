@@ -8,7 +8,7 @@ env: >-
     -iv $encrypted_356a4bfeed2c_iv -in deploy_rsa.enc -out deploy_rsa -d
     && eval "$(ssh-agent -s)" && chmod 600 deploy_rsa && ssh-add deploy_rsa &&
     chmod 700 ~/.ssh && chmod 600 ~/.ssh/authorized_keys &&
-    echo -e "Host $PRODUCTION_SERVER\n\tStrictHostKeyChecking no\n"
+    ssecho -e "Host $PRODUCTION_SERVER\n\tStrictHostKeyChecking no\n"
     >> ~/.ssh/config'
 install: lein clean
 script: lein cljsbuild once min
@@ -21,4 +21,4 @@ deploy:
   script: >-
     ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes
     -o PasswordAuthentication=no
-    -p22 ubuntu@$PRODUCTION_SERVER "echo "Hello world,jee" > test.txt"
+    -p22 $PRODUCTION_SERVER "echo "Hello world,jee" > test.txt"
