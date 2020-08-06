@@ -7,7 +7,7 @@ env:
   global:
     secure: eS3AlFOyHpmXks7BNqk7E5u89cJL+zdACDNowvmZNEYgK1cSp24UnNPhEt+HDOIn5dnHaVmURrPta8a16pq9ELr8IR/yxLdNt7CoEZZBtpLiezL/57iwsGlCiSf6r7sWUnlOlQI4KheP1G3sJCUR0EHegF3PUhoBo+4bWo1sxAlRA36JBwriUf1O2Ehb2oqzPy6NN2ISG0XUSXT8uE3fu0dMPOyf2x5EKX0PBB4nbw3lwpk8h+OgNsAPwXV08y/c6KOcFR01iq5DzDP7W6dGeSiBc2KCl7OlV2wn0UEm2aCM+AHfZFaAckURlt8aBKflJMgt0pmGXK7yTlygi9amCH4M55cJvrzDxGR3apWHpxeWAbl821Yk43rYRUnZwt4E/fQ9+Rr2RoE+iXb89m+9yZjVNakvPU3qIPzWdhGsrZiDNPmhXCeas2VnrlLwMBSmKXgaHF717Xc4ZOa0XAUoGUBGi5PAf3NZEKMYiDi0G1nfe9tADGvIxM64/kCVT/QOj2VvTC7Qw0nHrFaVLrWiEQtMOku3xQwznT2303yuHm9kHc13aQIZhiyWXzbKKFj/00LJi5/oRXmsn91taETzewODxud5tYonGqd8mW+YXiUQyYLoAEfycYl+2fxfihXO4/5l4PHAYvKxHM8c9j6FKjiuMYvEe4C2BokISPuavX4=
 before_install:
-  - openssl aes-256-cbc -k "$secret" -in id_rsa.enc -out id_rsa -d
+  - echo $secret | gpg --passphrase-fd 0 id_rsa.gpg
 install: lein clean && lein cljsbuild once min
 script: eval "$(ssh-agent -s)" && chmod 600 id_rsa && ssh-add id_rsa
 deploy:
