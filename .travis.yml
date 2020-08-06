@@ -1,0 +1,24 @@
+---
+dist: xenial
+language: clojure
+addons:
+  ssh_known_hosts:
+    - $PRODUCTION_SERVER
+env: >-
+  - openssl aes-256-cbc -K $encrypted_356a4bfeed2c_key
+  -iv $encrypted_356a4bfeed2c_iv -in new_rsa.enc -out new_rsa -d &&
+  eval "$(ssh-agent -s)" && chmod 600 new_rsa &&
+  ssh-add new_rsa && echo -e
+  "Host $PRODUCTION_SERVER\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+install: lein clean
+script: lein cljsbuild once min
+deploy:
+  skip_cleanup: true
+  on:
+    branch: master
+  provider: script
+  script: >-
+    ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes
+    -o PasswordAuthentication=no -p22 ubuntu@$PRODUCTION_SERVER
+    "echo "Hello world" > test.txt"
+  verbose: true
