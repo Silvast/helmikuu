@@ -8,4 +8,4 @@ COPY public /src/app
 
 EXPOSE 80
 
-CMD [ "http-server" "-p" "80" ]
+ENTRYPOINT ["http-server", "-p", "80"]
