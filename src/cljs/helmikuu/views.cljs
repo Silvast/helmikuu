@@ -15,7 +15,7 @@
   (let [panel (re-frame/subscribe [::subs/active-panel])
         document-title (re-frame/subscribe [::subs/title])]
     (goog.object/set js/document "title" @document-title)
-    [:header.header
+    [:header
      [:nav.navbar.navbar-expand-lg
       [:div.container
        [:div.navbar-header.d-flex.align-items-center.justify-content-between
@@ -54,25 +54,25 @@
   (let [blogs @(re-frame/subscribe [::subs/all-posts-api-response])]
     [:div.main
      [header]
-      [:div.siteintro
+     [:div.siteintro
       [:div.text [:h2 "Olen Ansku."]]
         ; [:div.frontpage-image
         ;   [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskunen-min.png"}]
         ;   [:div.text [:h2 "Olen Ansku."]]
         ;   [:div.pixel-overlay]]
-          ]
-          [:section.latest-posts
-            [:div.container
-            [:div.row.me-card
-              [:div.col-md-6.col-12
-              [:div.frontpage-image
-                [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
-               [:div.pixel-overlay]]]
+      ]
+     [:section.latest-posts
+      [:div.container
+       [:div.row.me-card
+        [:div.col-md-6.col-12
+         [:div.frontpage-image
+          [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
+          [:div.pixel-overlay]]]
         [:div.col-md-6.col-12
          [:p "Devaan ja yleistekkeilen,
        märsään ihmisoikeuksista, työelämästä ja sijoittamisesta. Työkseni teen
        teknisen projarin hommia.  "]
-          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]
+         [:p [:a {:href "#/about"} " Lue lisää."]]]]]]
      [:div.blogheading
       [:h2 "Viimeisimmät blogikirjoitukset"]]
      [:section.latest-posts
@@ -88,30 +88,10 @@
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
                  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
                  [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
-    ;  [:div.blogheading
-    ;   [:h2 "Twiittailut"]]
-    ;  [:section.latest-posts
-    ;   [:div.container
-    ;    [:div.row
-    ;     ; [:div [:div {:dangerouslySetInnerHTML {:__html "<a class=\"twitter-timeline\"
-    ;     ; href=\"https://twitter.com/AnskuSilvast?ref_src=twsrc%5Etfw\">Tweets by
-    ;     ; AnskuSilvast</a> <script async src=\"https://platform.twitter.com/widgets.js\"
-    ;     ; charset=\"utf-8\"></script>"}}] ] 
-    ;     ]]]
      [footer]]))
 
 ;; about
 
-
-; (defn about-panel []
-;   [:div.main
-;    [header]
-;    [:div.container.pt-4.about
-;     [:h1 "Minä olen Anne-Mari Silvast."]
-
-;     [:div
-;      [:h2 "Bio"]]]
-;    [footer]])
 (defn about-panel []
   (let [about-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
     [:div.main.about
