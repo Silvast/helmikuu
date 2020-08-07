@@ -15,6 +15,7 @@
   (let [panel (re-frame/subscribe [::subs/active-panel])
         document-title (re-frame/subscribe [::subs/title])]
     (goog.object/set js/document "title" @document-title)
+    (js/window.scrollTo 0 0)
     [:header
      [:nav.navbar.navbar-expand-lg
       [:div.container
@@ -55,12 +56,7 @@
     [:div.main
      [header]
      [:div.siteintro
-      [:div.text [:h2 "Olen Ansku."]]
-        ; [:div.frontpage-image
-        ;   [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskunen-min.png"}]
-        ;   [:div.text [:h2 "Olen Ansku."]]
-        ;   [:div.pixel-overlay]]
-      ]
+      [:div.text [:h2 "Olen Ansku."]]]
      [:section.latest-posts
       [:div.container
        [:div.row.me-card
@@ -82,7 +78,7 @@
                [:div.col-md-4.col-sm-12.col-xs-12.col-12 {:key (:ID blogitem)}
                 [:div.blog-card
                  [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
-                 [:div.post-meta.d-flex.justify-content-between
+                 [:div.post-meta.d-7flex.justify-content-between
                   [:div.date (take 10 (:date blogitem))]
                   [:div.category (:name (:tekki (:categories blogitem)))]]
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
