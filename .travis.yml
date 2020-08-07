@@ -23,5 +23,5 @@ deploy:
     ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes -o
     PasswordAuthentication=no
     -p22 $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER
-    "sh ~/resources/scripts/deploy.sh"
+    "sh ~/helmikuu/resources/scripts/deploy.sh"
   verbose: true
