@@ -6,6 +6,6 @@ WORKDIR /src/app
 RUN npm install --global http-server
 COPY public /src/app
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD [ "http-server" ]
+CMD [ "http-server -p 80" ]
