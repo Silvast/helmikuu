@@ -2,13 +2,13 @@ dist: xenial
 language: clojure
 addons:
   ssh_known_hosts:
-  - "$PRODUCTION_SERVER"
+    - "$PRODUCTION_SERVER"
 env:
   global:
-  - secure: eS3AlFOyHpmXks7BNqk7E5u89cJL+zdACDNowvmZNEYgK1cSp24UnNPhEt+HDOIn5dnHaVmURrPta8a16pq9ELr8IR/yxLdNt7CoEZZBtpLiezL/57iwsGlCiSf6r7sWUnlOlQI4KheP1G3sJCUR0EHegF3PUhoBo+4bWo1sxAlRA36JBwriUf1O2Ehb2oqzPy6NN2ISG0XUSXT8uE3fu0dMPOyf2x5EKX0PBB4nbw3lwpk8h+OgNsAPwXV08y/c6KOcFR01iq5DzDP7W6dGeSiBc2KCl7OlV2wn0UEm2aCM+AHfZFaAckURlt8aBKflJMgt0pmGXK7yTlygi9amCH4M55cJvrzDxGR3apWHpxeWAbl821Yk43rYRUnZwt4E/fQ9+Rr2RoE+iXb89m+9yZjVNakvPU3qIPzWdhGsrZiDNPmhXCeas2VnrlLwMBSmKXgaHF717Xc4ZOa0XAUoGUBGi5PAf3NZEKMYiDi0G1nfe9tADGvIxM64/kCVT/QOj2VvTC7Qw0nHrFaVLrWiEQtMOku3xQwznT2303yuHm9kHc13aQIZhiyWXzbKKFj/00LJi5/oRXmsn91taETzewODxud5tYonGqd8mW+YXiUQyYLoAEfycYl+2fxfihXO4/5l4PHAYvKxHM8c9j6FKjiuMYvEe4C2BokISPuavX4=
-  - secure: GRF7LjqJYQnrEQP3auBzK0ZT5cTov99cwBEexLuZtrmZBInF4tydhkiRv9QtT0o1fA9P4gWcct5QYqC9q/8nva4nsLh8ofyaanhpZkbYhdgLtPyVSHXyFj+Dz448LRVGoYHnfc2Gtw3YwtIr7SI2uYMlJUHnS5wnb+ZWilaXpA4MWib5KuJlOMthjGe8kQqerNJr9fPCyUSW/01XfPBUPP+OMjn2LDq3/FuoqGuXQxgVOgpSRZt6JIdTUThiwKGz35W29gYcLTPE36iwc8U6PyIzGfdMEsWibZBpvUlP1ns6VxsAsWGo59iTnc7wBjADs5rFtKHN583js+cRwKu7spEverZpEkyzmcX3vCkFgTSTfxb9vymE+WeyS7NvLaNC99s5XLJ+0WYzaW1smNnES5WetjGCdIdoIufbUP5CmnkzvpSgAES/CU8E6X7DNxZCyVxIRm2mHNB0L1JrEaophFFlmQdpzhqVUSja9wi9VyarIOtWjk0JFMDnltG+JZvmPSzU5/MWG+vm2hnQmnc7ouIDpGsiWsu2vjrm998XnBudzjkywJEONJf4atAO7Hi/otANfbNlXohhJrcj7RI/IS7++dy/DfL5k63cVDPB8gpk/yL67TylDNrQYg0U9a2hZCfMctBtsIi1k+3w/HH5hyh2MEKvkFnhh+g4ZfBjOYE=
+    - secure: eS3AlFOyHpmXks7BNqk7E5u89cJL+zdACDNowvmZNEYgK1cSp24UnNPhEt+HDOIn5dnHaVmURrPta8a16pq9ELr8IR/yxLdNt7CoEZZBtpLiezL/57iwsGlCiSf6r7sWUnlOlQI4KheP1G3sJCUR0EHegF3PUhoBo+4bWo1sxAlRA36JBwriUf1O2Ehb2oqzPy6NN2ISG0XUSXT8uE3fu0dMPOyf2x5EKX0PBB4nbw3lwpk8h+OgNsAPwXV08y/c6KOcFR01iq5DzDP7W6dGeSiBc2KCl7OlV2wn0UEm2aCM+AHfZFaAckURlt8aBKflJMgt0pmGXK7yTlygi9amCH4M55cJvrzDxGR3apWHpxeWAbl821Yk43rYRUnZwt4E/fQ9+Rr2RoE+iXb89m+9yZjVNakvPU3qIPzWdhGsrZiDNPmhXCeas2VnrlLwMBSmKXgaHF717Xc4ZOa0XAUoGUBGi5PAf3NZEKMYiDi0G1nfe9tADGvIxM64/kCVT/QOj2VvTC7Qw0nHrFaVLrWiEQtMOku3xQwznT2303yuHm9kHc13aQIZhiyWXzbKKFj/00LJi5/oRXmsn91taETzewODxud5tYonGqd8mW+YXiUQyYLoAEfycYl+2fxfihXO4/5l4PHAYvKxHM8c9j6FKjiuMYvEe4C2BokISPuavX4=
+    - secure: GRF7LjqJYQnrEQP3auBzK0ZT5cTov99cwBEexLuZtrmZBInF4tydhkiRv9QtT0o1fA9P4gWcct5QYqC9q/8nva4nsLh8ofyaanhpZkbYhdgLtPyVSHXyFj+Dz448LRVGoYHnfc2Gtw3YwtIr7SI2uYMlJUHnS5wnb+ZWilaXpA4MWib5KuJlOMthjGe8kQqerNJr9fPCyUSW/01XfPBUPP+OMjn2LDq3/FuoqGuXQxgVOgpSRZt6JIdTUThiwKGz35W29gYcLTPE36iwc8U6PyIzGfdMEsWibZBpvUlP1ns6VxsAsWGo59iTnc7wBjADs5rFtKHN583js+cRwKu7spEverZpEkyzmcX3vCkFgTSTfxb9vymE+WeyS7NvLaNC99s5XLJ+0WYzaW1smNnES5WetjGCdIdoIufbUP5CmnkzvpSgAES/CU8E6X7DNxZCyVxIRm2mHNB0L1JrEaophFFlmQdpzhqVUSja9wi9VyarIOtWjk0JFMDnltG+JZvmPSzU5/MWG+vm2hnQmnc7ouIDpGsiWsu2vjrm998XnBudzjkywJEONJf4atAO7Hi/otANfbNlXohhJrcj7RI/IS7++dy/DfL5k63cVDPB8gpk/yL67TylDNrQYg0U9a2hZCfMctBtsIi1k+3w/HH5hyh2MEKvkFnhh+g4ZfBjOYE=
 before_install:
-- echo $passphrase | gpg --passphrase-fd 0 new_rsa.gpg
+  - echo $passphrase | gpg --passphrase-fd 0 new_rsa.gpg
 install: lein clean && lein cljsbuild once min
 script: eval "$(ssh-agent -s)" && chmod 600 new_rsa && ssh-add new_rsa
 deploy:
@@ -16,6 +16,12 @@ deploy:
   on:
     branch: master
   provider: script
-  script: ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes -o PasswordAuthentication=no
-    -p22 ubuntu@$PRODUCTION_SERVER "echo "Hello taas" > test.txt"
+  script: >-
+    rsync -r --delete-after -e "ssh -o StrictHostKeyChecking=no -o
+    PubkeyAuthentication=yes -o PasswordAuthentication=no" --quiet resources
+    $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER:~/helmikuu/ &&
+    ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes -o
+    PasswordAuthentication=no
+    -p22 $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER
+    "sh ~/resources/scripts/deploy.sh"
   verbose: true
