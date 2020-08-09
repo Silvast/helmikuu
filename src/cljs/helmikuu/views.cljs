@@ -80,7 +80,7 @@
                  [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
                  [:div.post-meta.d-7flex.justify-content-between
                   [:div.date (take 10 (:date blogitem))]
-                  [:div.category (:name (:tekki (:categories blogitem)))]]
+                  [:div.category (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
                  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
                  [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
