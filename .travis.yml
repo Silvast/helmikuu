@@ -18,6 +18,6 @@ deploy:
   provider: script
   script: >-
     rsync -r --delete-after -e "ssh -o StrictHostKeyChecking=no -o
-    PubkeyAuthentication=yes -o PasswordAuthentication=no" --quiet -av resources/public
+    PubkeyAuthentication=yes -o PasswordAuthentication=no" --quiet -av resources/public/
     $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER:/var/www/html/
   verbose: true
