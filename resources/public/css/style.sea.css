@@ -170,7 +170,8 @@ h1 a:hover {
 }
 
 .siteintro {
-  background-color: rgb(31, 222, 130, 0.7);
+  background-color: black;
+  /* rgb(31, 222, 130, 0.7); */
   position: relative;
   display: inline-block;
   text-align: center;
