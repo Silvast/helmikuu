@@ -19,9 +19,5 @@ deploy:
   script: >-
     rsync -r --delete-after -e "ssh -o StrictHostKeyChecking=no -o
     PubkeyAuthentication=yes -o PasswordAuthentication=no" --quiet resources
-    $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER:~/helmikuu/ &&
-    ssh -o StrictHostKeyChecking=no -o PubkeyAuthentication=yes -o
-    PasswordAuthentication=no
-    -p22 $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER
-    "sh ~/helmikuu/resources/scripts/deploy.sh"
+    $PRODUCTION_SERVER_USER@$PRODUCTION_SERVER:~/var/www/html/
   verbose: true

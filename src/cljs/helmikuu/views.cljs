@@ -65,9 +65,9 @@
           [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/06/anskuit-e1593619460448.jpg"}]
           [:div.pixel-overlay]]]
         [:div.col-md-6.col-12
-         [:p "Devaan ja yleistekkeilen,
-       märsään ihmisoikeuksista, työelämästä ja sijoittamisesta. Työkseni teen
-       teknisen projarin hommia.  "]
+         [:p "Moikka, oon Ansku! Devaan ja yleistekkeilen,
+       märsään ihmisoikeuksista, työelämästä, sijoittamisesta ja kaikesta randomista. Työkseni teen
+       IT-konsultin hommia, lähinnä koodaavan scrummarin roolissa tahi teknisenä projektipäällikkönä.  "]
          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]
      [:div.blogheading
       [:h2 "Viimeisimmät blogikirjoitukset"]]
