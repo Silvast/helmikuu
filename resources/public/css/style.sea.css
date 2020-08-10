@@ -27,6 +27,10 @@ body {
   height: 100%;
 }
 
+p {
+  font-size: 1.3rem;
+}
+
 .main {
   background-color: white;
   height: 100%;
@@ -187,6 +191,7 @@ h1 a:hover {
   text-decoration-color: white;
   text-underline-position: under;
   text-transform: uppercase;
+  text-align: center;
 }
 
 .blogheading {
@@ -755,13 +760,31 @@ div[class*="-btn"] {
   padding-bottom: 0.5rem;
 }
 
+ul.navbar-nav {
+  flex-direction: row;
+  justify-content: right;
+}
+
 /* Navbar Media Query ------------------------------------- */
-@media (max-width: 991px) {
+@media (min-width: 992px) {
   nav.navbar .navbar-header {
-    width: 50%;
+    width: 100%;
   }
   ul.navbar-nav {
-    text-align: center;
+    text-align: right !important;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 991px) {
+  nav.navbar .navbar-header {
+    width: 100%;
+  }
+  ul.navbar-nav {
+    text-align: right !important;
+    flex-direction: row;
+    justify-content: center;
   }
   nav.navbar::after {
     width: 100%;
@@ -914,18 +937,33 @@ section.featured-posts .post-footer {
 }
 
 /* Featured Posts Section Media Query ------------------------------------- */
-@media (min-width: 991px) {
+@media (min-width: 2000px) {
   .container-fluid {
-    max-width: 70%;
+    max-width: 50% !important;
+  }
+
+}
+
+@media (min-width: 1140px) {
+  .container-fluid {
+    max-width: 80%;
   }
 
   .post-thumbnail {
     max-height: 90%;
   }
+
 }
+
+@media (max-width: 1379px) {
+.siteintro .text h2 {
+  font-size: 4rem;
+}
+}
+
 @media (max-width: 991px) {
   .container-fluid {
-    max-width: 100%;
+    max-width: 80%;
   }
   section.featured-posts .image {
     -webkit-box-ordinal-group: 2;
@@ -943,16 +981,22 @@ section.featured-posts .post-footer {
     -ms-flex-order: 2;
     order: 2;
   }
+
+  .post-thumbnail {
+    max-width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+    max-width: 80%;
+  }
+
   .siteintro {
     display: none;
   }
 }
 
-@media (max-width: 767px) {
-  .post-thumbnail {
-    max-width: 60%;
-  }
-}
 
 @media (max-width: 575px) {
   section.featured-posts .post-footer {
@@ -1318,7 +1362,7 @@ footer.main-footer .title::after {
 }
 
 /* Footer Media Query ------------------------------------- */
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   footer.main-footer div[class*="col-"],
   section.latest-posts div[class*="col-"] {
     margin-bottom: 40px;

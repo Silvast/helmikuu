@@ -24,7 +24,7 @@
         ; [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskuicon2.png"}]
          ]]
        [:div#navbarcollapse.collapse.navbar-collapse.show
-        [:ul.navbar-nav.ml-auto
+        [:ul.navbar-nav
          [:li.nav-item
           [(if (= @panel :home-panel)
              :a.nav-link.active
@@ -75,7 +75,7 @@
       [:div.container-fluid
        [:div.row
         (map (fn [blogitem]
-               [:div.col-md-4.col-sm-12.col-xs-12.col-12 {:key (:ID blogitem)}
+               [:div.col-xl-4.col-lg-4.col-md-12 {:key (:ID blogitem)}
                 [:div.blog-card
                  [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
                  [:div.post-meta.d-7flex.justify-content-between
