@@ -13,6 +13,7 @@ Bootstrap Temple Blog Template
 */
 html {
   height: 100%;
+  background-color: #fff;
 }
 .text-bold {
   font-weight: 700;
@@ -1007,6 +1008,16 @@ section.featured-posts .post-footer {
   section.featured-posts .post-footer {
     font-size: 0.9em;
   }
+  /* article {
+    font-size: 0.4em;
+  } */
+  .siteintro {
+    height: 50%;
+    padding: 4rem;
+  }
+  .aboutrow {
+    margin: 1rem;
+  }
 }
 
 @media (max-width: 350px) {
@@ -1805,6 +1816,12 @@ blockquote > cite {
   }
   .blog-post .author {
     margin-bottom: 10px;
+  }
+  div[class*="col-"] {
+    margin-bottom: 40px;
+  }
+  .text-muted > p {
+    font-size: 0.9rem;
   }
 }
 

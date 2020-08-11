@@ -93,11 +93,12 @@
     [:div.main.about
      [header]
      [:div.container.pt-4
-      [:div.row
+      [:div.row.aboutrow
        [:div.col-sm
-        [:article
+        [:div.container
+          [:article
          [:h1 "Minä olen Anne-Mari Silvast."]
-         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @about-api-response)}}]]]]]
+         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @about-api-response)}}]]]]]]
      [footer]]))
 
  ;; blog
