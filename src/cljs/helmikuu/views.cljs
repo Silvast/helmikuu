@@ -78,9 +78,9 @@
                [:div.col-xl-4.col-lg-4.col-md-12 {:key (:ID blogitem)}
                 [:div.blog-card
                  [:div.post-thumbnail [:a {:href (str "#/blog/" (:slug blogitem))} [:img.img-fluid {:src (:URL (:post_thumbnail blogitem))}]]]
-                 [:div.post-meta.d-7flex.justify-content-between
-                  [:div.date (take 10 (:date blogitem))]
-                  [:div.category (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
+                 [:div.post-meta.row
+                  [:div.date.col-lg-6.col-md-4.col-4 (take 10 (:date blogitem))]
+                  [:div.category.col-lg-6.col-md-4.col-4 (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
                  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
                  [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
@@ -110,6 +110,9 @@
       (map (fn [blogitem]
              [:div {:key (:ID blogitem)}
               [:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
+              [:div.post-meta.row
+              [:div.date.col-md-2.col-3 (take 10 (:date blogitem))]
+              [:div.category.md-2.col-3 (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
               [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
               [:a {:href "#"}]]) (:posts data))]
      [footer]]))
@@ -118,11 +121,14 @@
   (let [blogpost-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
     [:div.main.about
      [header]
-     [:div.container.pt-4
+     [:div.container.pt-4.pl-4.pr-4
       [:div.row
        [:div.col-sm
         [:article
          [:h1 (:title @blogpost-api-response)]
+         [:div.post-meta.row
+         [:div.date.col-md-2.col-3 (take 10 (:date @blogpost-api-response))]
+         [:div.category.md-2.col-3 (:name (get-in (:categories @blogpost-api-response) (keys (:categories @blogpost-api-response))))]]
          [:p {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]
      [footer]]))
 ;; main

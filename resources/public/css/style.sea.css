@@ -502,6 +502,10 @@ h6 {
   margin-bottom: 15px;
 }
 
+h1 {
+  color: #1fde82 !important;
+}
+
 .pagination-template li.page-item {
   margin: 0 5px;
 }
@@ -993,7 +997,8 @@ section.featured-posts .post-footer {
   }
 
   .siteintro {
-    display: none;
+    height: 50%;
+    padding: 10rem;
   }
 }
 
@@ -1363,8 +1368,7 @@ footer.main-footer .title::after {
 
 /* Footer Media Query ------------------------------------- */
 @media (max-width: 991px) {
-  footer.main-footer div[class*="col-"],
-  section.latest-posts div[class*="col-"] {
+  footer.main-footer div[class*="col-"] {
     margin-bottom: 40px;
   }
   footer.main-footer div[class*="col-"] {
