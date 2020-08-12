@@ -36,7 +36,11 @@
          [:li.nav-item
           [(if (= @panel :about-panel)
              :a.nav-link.active
-             :a..nav-link) {:href "#/about"} "Minä"]]]]]]]))
+             :a..nav-link) {:href "#/about"} "Minä"]]
+         [:li.nav-item
+          [(if (= @panel :english-panel)
+             :a.nav-link.active
+             :a..nav-link) {:href "#/english"} "In English"]]]]]]]))
 
 ;; Footer
 (defn footer []
@@ -96,9 +100,9 @@
       [:div.row.aboutrow
        [:div.col-sm
         [:div.container
-          [:article
-         [:h1 "Minä olen Anne-Mari Silvast."]
-         [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @about-api-response)}}]]]]]]
+         [:article
+          [:h1 "Minä olen Anne-Mari Silvast."]
+          [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @about-api-response)}}]]]]]]
      [footer]]))
 
  ;; blog
@@ -112,8 +116,8 @@
              [:div {:key (:ID blogitem)}
               [:h1 [:a {:href (str "#/blog/" (:slug blogitem))} (:title blogitem)]]
               [:div.post-meta.row
-              [:div.date.col-md-2.col-3 (take 10 (:date blogitem))]
-              [:div.category.md-2.col-3 (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
+               [:div.date.col-md-2.col-3 (take 10 (:date blogitem))]
+               [:div.category.md-2.col-3 (:name (get-in (:categories blogitem) (keys (:categories blogitem))))]]
               [:p {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
               [:a {:href "#"}]]) (:posts data))]
      [footer]]))
@@ -128,12 +132,24 @@
         [:article
          [:h1 (:title @blogpost-api-response)]
          [:div.post-meta.row
-         [:div.date.col-md-2.col-3 (take 10 (:date @blogpost-api-response))]
-         [:div.category.md-2.col-3 (:name (get-in (:categories @blogpost-api-response) (keys (:categories @blogpost-api-response))))]]
+          [:div.date.col-md-2.col-3 (take 10 (:date @blogpost-api-response))]
+          [:div.category.md-2.col-3 (:name (get-in (:categories @blogpost-api-response) (keys (:categories @blogpost-api-response))))]]
          [:p {:dangerouslySetInnerHTML {:__html (:content @blogpost-api-response)}}]]]]]
      [footer]]))
 ;; main
 
+(defn english-panel []
+  (let [english-api-response (re-frame/subscribe [::subs/blogpost-api-response])]
+    [:div.main.about
+     [header]
+     [:div.container.pt-4
+      [:div.row.aboutrow
+       [:div.col-sm
+        [:div.container
+         [:article
+          [:h1 "About Anne-Mari Silvast"]
+          [:p.text-bigger {:dangerouslySetInnerHTML {:__html (:content @english-api-response)}}]]]]]]
+     [footer]]))
 
 (defn- panels [panel-name]
   (case panel-name
@@ -141,6 +157,7 @@
     :about-panel [about-panel]
     :blog-panel [blog-panel]
     :blogitem-panel [blogitem-panel]
+    :english-panel [english-panel]
     [:div]))
 
 (defn show-panel [panel-name]

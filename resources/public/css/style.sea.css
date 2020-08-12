@@ -104,7 +104,7 @@ aside {
 
 h1 a {
   margin-left: 0px;
-  font-size: 0.9em;
+  font-size: 0.7em;
   /* opacity: 0; */
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -747,7 +747,7 @@ div[class*="-btn"] {
 .navbar .navbar-nav a.nav-link {
   color: #5d6678;
   margin: 0 5px;
-  font-size: 0.9em;
+  font-size: 0.7em;
   text-transform: uppercase;
   padding: 0.5rem 1rem;
 }
@@ -758,7 +758,7 @@ div[class*="-btn"] {
 
 .navbar .navbar-nav a.nav-link.active {
   /* color: #f5ff4b; */
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: underline;
   text-decoration-color: #1fde82;
   text-underline-position: under;
@@ -773,7 +773,7 @@ ul.navbar-nav {
 /* Navbar Media Query ------------------------------------- */
 @media (min-width: 992px) {
   nav.navbar .navbar-header {
-    width: 100%;
+    width: 60%;
   }
   ul.navbar-nav {
     text-align: right !important;
@@ -784,7 +784,7 @@ ul.navbar-nav {
 
 @media (max-width: 991px) {
   nav.navbar .navbar-header {
-    width: 100%;
+    width: 40%;
   }
   ul.navbar-nav {
     text-align: right !important;
@@ -946,7 +946,6 @@ section.featured-posts .post-footer {
   .container-fluid {
     max-width: 50% !important;
   }
-
 }
 
 @media (min-width: 1140px) {
@@ -957,13 +956,12 @@ section.featured-posts .post-footer {
   .post-thumbnail {
     max-height: 90%;
   }
-
 }
 
 @media (max-width: 1379px) {
-.siteintro .text h2 {
-  font-size: 4rem;
-}
+  .siteintro .text h2 {
+    font-size: 4rem;
+  }
 }
 
 @media (max-width: 991px) {
@@ -1003,7 +1001,6 @@ section.featured-posts .post-footer {
   }
 }
 
-
 @media (max-width: 575px) {
   section.featured-posts .post-footer {
     font-size: 0.9em;
@@ -1014,7 +1011,7 @@ section.featured-posts .post-footer {
   .siteintro {
     height: 50%;
     padding: 10rem 2rem;
-}
+  }
   .aboutrow {
     margin: 1rem;
   }
@@ -1031,8 +1028,10 @@ section.featured-posts .post-footer {
   .siteintro > .text > h2 {
     font-size: 2.5rem;
   }
+  img {
+    max-width: 97%;
+  }
 }
-
 
 @media (max-width: 350px) {
   section.featured-posts .text-inner {
