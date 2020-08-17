@@ -1030,6 +1030,7 @@ section.featured-posts .post-footer {
   }
   img {
     max-width: 97%;
+    max-height: 97%;
   }
 }
 
