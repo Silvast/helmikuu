@@ -41,7 +41,7 @@ p {
 
 .about {
   min-height: 1200px;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 .wp-block-code,
@@ -600,12 +600,38 @@ div[class*="-btn"] {
   */
 .navbar {
   background: #fff;
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 9998;
   border-bottom: 1px solid #ddd;
 }
 
+.navbar .navbar-nav a.nav-link {
+  color: #5d6678;
+  margin: 0 5px;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .navbar-nav a.nav-link:hover {
+  color: #f5ff4b;
+}
+
+.navbar .navbar-nav a.nav-link.active {
+  text-decoration: underline;
+  text-decoration-color: #1fde82;
+  text-underline-position: under;
+  padding-bottom: 0.5rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-weight: 500 !important;
+  font-size: medium !important;
+}
+/* 
 .navbar .langs a:first-of-type,
 .navbar .search-btn {
   margin-left: 20px;
@@ -740,75 +766,49 @@ div[class*="-btn"] {
   font-size: 1.1em;
 }
 
-.nav-link {
-  display: block;
-  padding: 0.5rem 1rem;
-  font-weight: 500 !important;
-  font-size: medium !important;
-}
-
-.navbar .navbar-nav a.nav-link {
-  color: #5d6678;
-  margin: 0 5px;
-  font-size: 0.7em;
-  text-transform: uppercase;
-  padding: 0.5rem 1rem;
-}
-
-.navbar .navbar-nav a.nav-link:hover {
-  color: #f5ff4b;
-}
-
-.navbar .navbar-nav a.nav-link.active {
-  /* color: #f5ff4b; */
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-color: #1fde82;
-  text-underline-position: under;
-  padding-bottom: 0.5rem;
-}
-
-ul.navbar-nav {
-  flex-direction: row;
-  justify-content: right;
-}
 
 /* Navbar Media Query ------------------------------------- */
+
+/* ul.navbar-nav {
+  flex-direction: row;
+  justify-content: right;
+} */
+
 @media (min-width: 992px) {
   nav.navbar .navbar-header {
     width: 50%;
   }
-
+  .navbar-expand-lg {
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -ms-flex-pack: start;
+    justify-content: right !important;
+  }
   ul.navbar-nav {
     text-align: right !important;
     flex-direction: row;
-    justify-content: center;
+    justify-content: right;
+    padding: 2%;
+  }
+
+  .navbar {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 }
 
 @media (max-width: 991px) {
-  nav.navbar .navbar-header {
-    width: 40%;
+  .navbar-collapse.collapse.in {
+    display: block !important;
   }
+
+  /* nav.navbar .navbar-header {
+    width: 40%;
+  } */
   div[class*="col-"] {
     margin-bottom: 40px;
   }
-  ul.navbar-nav {
-    text-align: right !important;
-    flex-direction: row;
-    justify-content: center;
-  }
-  nav.navbar::after {
-    width: 100%;
-  }
-  nav.navbar.active::after {
-    width: calc(100% - 170px);
-  }
-  nav.navbar .search-area {
-    font-size: 0.75em;
-  }
 }
-
 /*
   * ==========================================================
   *     HERO SECTION
@@ -1036,10 +1036,10 @@ section.featured-posts .post-footer {
     max-height: 100%;
     object-fit: contain;
   }
-  .navbar .navbar-nav a.nav-link {
+  /* .navbar .navbar-nav a.nav-link {
     font-size: 0.7em !important;
     padding: 0.5rem 0.5rem;
-  }
+  } */
 }
 
 @media (max-width: 350px) {
@@ -1885,9 +1885,9 @@ blockquote > cite {
 /*
    * 1. NAVBAR
    */
-.navbar {
+/* .navbar {
   padding: 0.5rem 1rem;
-}
+} */
 
 .navbar-brand {
   display: inline-block;

@@ -17,32 +17,33 @@
     (goog.object/set js/document "title" @document-title)
     (js/window.scrollTo 0 0)
     [:header
-     [:nav.navbar.navbar-expand-lg
-      [:div.container
-       [:div.navbar-header.d-flex.align-items-center.justify-content-between
-        [:a.navbar-brand {:href "#/"}
-        ; [:img.img-fluid {:src "https://anskufail.files.wordpress.com/2020/07/anskuicon2.png"}]
-         ]]
-       [:div#navbarcollapse.collapse.navbar-collapse.show
-        [:ul.navbar-nav
-         [:li.nav-item
-          [(if (= @panel :home-panel)
-             :a.nav-link.active
-             :a.nav-link) {:href "#/"} "Etusivu"]]
-         [:li.nav-item
-          [(if (or (= @panel :blog-panel) (= @panel :blogitem-panel))
-             :a.nav-link.active
-             :a.nav-link) {:href "#/blog"} "Blogi"]]
-         [:li.nav-item
-          [(if (= @panel :about-panel)
-             :a.nav-link.active
-             :a..nav-link) {:href "#/about"} "Minä"]]
-         [:li.nav-item
-          [(if (= @panel :english-panel)
-             :a.nav-link.active
-             :a..nav-link) {:href "#/english"} "In English"]]]]]]]))
+     [:nav.navbar.navbar-expand-lg.navbar-light
+      [:a.navbar-brand {:href "#/"}]
+      [:button.navbar-toggler
+       {:type "button" :data-toggle "collapse" :data-target "#navbarSupportedContent"}
+       [:span.navbar-toggler-icon]]
+      [:div.collapse.navbar-collapse {:id "navbarSupportedContent"}
+       [:ul.navbar-nav.ml-auto
+        [:li.nav-item
+         [(if (= @panel :home-panel)
+            :a.nav-link.active
+            :a.nav-link) {:href "#/"} "Etusivu"]]
+        [:li.nav-item
+         [(if (or (= @panel :blog-panel) (= @panel :blogitem-panel))
+            :a.nav-link.active
+            :a.nav-link) {:href "#/blog"} "Blogi"]]
+        [:li.nav-item
+         [(if (= @panel :about-panel)
+            :a.nav-link.active
+            :a..nav-link) {:href "#/about"} "Minä"]]
+        [:li.nav-item
+         [(if (= @panel :english-panel)
+            :a.nav-link.active
+            :a..nav-link) {:href "#/english"} "In English"]]]]]]))
 
 ;; Footer
+
+
 (defn footer []
   [:footer.main-footer
    [:div.container
