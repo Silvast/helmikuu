@@ -778,6 +778,7 @@ ul.navbar-nav {
   nav.navbar .navbar-header {
     width: 50%;
   }
+
   ul.navbar-nav {
     text-align: right !important;
     flex-direction: row;
@@ -788,6 +789,9 @@ ul.navbar-nav {
 @media (max-width: 991px) {
   nav.navbar .navbar-header {
     width: 40%;
+  }
+  div[class*="col-"] {
+    margin-bottom: 40px;
   }
   ul.navbar-nav {
     text-align: right !important;
@@ -1017,10 +1021,6 @@ section.featured-posts .post-footer {
   }
   .aboutrow {
     margin: 1rem;
-  }
-
-  div[class*="col-"] {
-    margin-bottom: 40px;
   }
   .text-muted > p {
     font-size: 0.9rem;
