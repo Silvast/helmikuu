@@ -776,7 +776,7 @@ ul.navbar-nav {
 /* Navbar Media Query ------------------------------------- */
 @media (min-width: 992px) {
   nav.navbar .navbar-header {
-    width: 60%;
+    width: 50%;
   }
   ul.navbar-nav {
     text-align: right !important;
