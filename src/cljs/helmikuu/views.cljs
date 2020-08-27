@@ -89,6 +89,7 @@
                  [:a {:href (str "#/blog/" (:slug blogitem))} [:h3.h4 (:title blogitem)]]
                  [:p.text-muted {:dangerouslySetInnerHTML {:__html (:excerpt blogitem)}}]
                  [:a {:href (str "#/blog/" (:slug blogitem))} "lue lisää.."]]]) (take 3 (:posts blogs)))]]]
+     [:div.blogheading [:a.btn.btn-primary {:href "#/blog"} "Kaikki postaukset"]]
      [footer]]))
 
 ;; about
