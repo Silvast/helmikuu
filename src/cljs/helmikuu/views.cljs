@@ -72,7 +72,7 @@
         [:div.col-md-6.col-12
          [:p "Moikka, oon Ansku! Devaan ja yleistekkeilen,
        märsään ihmisoikeuksista, työelämästä, sijoittamisesta ja kaikesta randomista. Työkseni teen
-       nykyään hommia Ylellä koodaavana Team Leadina" [:a {:href "https://yle.dev/"} " yle.dev:llä."].  ]
+       nykyään hommia Ylellä koodaavana Team Leadina " [:a {:href "https://yle.dev/"} " yle.dev:llä."]]
          [:p [:a {:href "#/about"} " Lue lisää."]]]]]]
      [:div.blogheading
       [:h2 "Viimeisimmät blogikirjoitukset"]]
